@@ -41,6 +41,9 @@ function App() {
 
     useEffect(() => {
         if (flag) {
+            document
+                .querySelector(':root')
+                .style.setProperty('--vh', window.innerHeight / 100 + 'px')
             window.addEventListener('resize', () => {
                 document
                     .querySelector(':root')
@@ -228,7 +231,7 @@ function App() {
 const Main = styled.div`
     color: ${({ theme }) => theme.colors.font};
     position: relative;
-    height: 100vh;
+    height: calc(100 * var(--vh));
     width: 100vw;
     overflow: hidden;
     display: flex;

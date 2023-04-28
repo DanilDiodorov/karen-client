@@ -89,7 +89,7 @@ const Main = styled.div`
 
     @media ${({ theme }) => theme.media.large} {
         margin-right: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
         margin-top: 5px;
     }
 `
