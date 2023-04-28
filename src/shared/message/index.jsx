@@ -25,7 +25,7 @@ const Main = styled.div`
     margin-right: 25px;
 
     @media ${({ theme }) => theme.media.large} {
-        margin-right: 10px;
+        margin-right: 7px;
     }
 `
 const MarkKeyframes = keyframes`

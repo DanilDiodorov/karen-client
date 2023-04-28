@@ -81,7 +81,7 @@ export const RoomMessages = ({
 
 const Main = styled.div`
     padding-top: 10px;
-    flex-grow: 1;
+    flex-basis: 100%;
     gap: 10px;
     display: flex;
     flex-direction: column;

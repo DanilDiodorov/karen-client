@@ -43,6 +43,7 @@ const Main = styled.div`
     justify-content: space-between;
     align-items: center;
     font-size: 30px;
+    flex-shrink: 0;
 
     @media ${({ theme }) => theme.media.large} {
         display: flex;

@@ -113,6 +113,7 @@ const Main = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-right: 30px;
+    flex-shrink: 0;
 
     @media ${({ theme }) => theme.media.large} {
         display: ${({ active }) => (active ? 'flex' : 'none')};

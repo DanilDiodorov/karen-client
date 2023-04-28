@@ -86,6 +86,7 @@ const Main = styled.div`
     justify-content: space-between;
     margin-right: 30px;
     gap: 10px;
+    flex-shrink: 0;
 
     @media ${({ theme }) => theme.media.large} {
         margin-right: 10px;
