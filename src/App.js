@@ -41,6 +41,11 @@ function App() {
 
     useEffect(() => {
         if (flag) {
+            window.addEventListener('resize', () => {
+                document
+                    .querySelector(':root')
+                    .style.setProperty('--vh', window.innerHeight / 100 + 'px')
+            })
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
                     setLoading(true)
@@ -222,6 +227,7 @@ function App() {
 
 const Main = styled.div`
     color: ${({ theme }) => theme.colors.font};
+    position: relative;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -229,6 +235,7 @@ const Main = styled.div`
 
     @media ${({ theme }) => theme.media.large} {
         display: block;
+        height: 100%;
     }
 `
 
