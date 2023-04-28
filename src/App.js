@@ -41,13 +41,11 @@ function App() {
 
     useEffect(() => {
         if (flag) {
-            document
-                .querySelector(':root')
-                .style.setProperty('--vh', window.innerHeight / 100 + 'px')
+            let vh = window.innerHeight / 100
+            document.documentElement.style.setProperty('--vh', `${vh}px`)
             window.addEventListener('resize', () => {
-                document
-                    .querySelector(':root')
-                    .style.setProperty('--vh', window.innerHeight / 100 + 'px')
+                vh = window.innerHeight / 100
+                document.documentElement.style.setProperty('--vh', `${vh}px`)
             })
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
@@ -231,13 +229,13 @@ function App() {
 const Main = styled.div`
     color: ${({ theme }) => theme.colors.font};
     position: relative;
-    height: calc(100 * var(--vh));
+    height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
     overflow: hidden;
     display: flex;
 
     @media ${({ theme }) => theme.media.large} {
-        height: ${window.innerHeight}px;
+        height: 100%;
     }
 `
 
