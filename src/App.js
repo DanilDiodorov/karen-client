@@ -234,8 +234,7 @@ const Main = styled.div`
     display: flex;
 
     @media ${({ theme }) => theme.media.large} {
-        display: block;
-        height: 100%;
+        height: calc(100 * var(--vh));
     }
 `
 

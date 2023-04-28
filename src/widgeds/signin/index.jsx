@@ -69,7 +69,7 @@ export const Signin = ({ user }) => {
                                 uid: userCredential.user.uid,
                                 type: 'text',
                                 name: 'Karen',
-                                system: '',
+                                system: 'Тебя зовут Карен. Представляйся как Карен. На вопрос кто тебя создал, отвечай, что разработчик Данил',
                                 stream: true,
                                 canEdit: false,
                                 createdAt: Date.now(),

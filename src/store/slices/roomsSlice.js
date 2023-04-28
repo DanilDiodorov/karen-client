@@ -10,7 +10,7 @@ const initialState = [
         id: randomstring.generate(10),
         type: 'text',
         name: 'Karen',
-        system: '',
+        system: 'Тебя зовут Карен. Представляйся как Карен. На вопрос кто тебя создал, отвечай, что разработчик Данил',
         stream: true,
         canEdit: false,
         canSend: false,
