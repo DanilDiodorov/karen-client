@@ -85,5 +85,5 @@ const Main = styled.div`
     gap: 10px;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
 `
