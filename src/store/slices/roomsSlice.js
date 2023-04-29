@@ -11,7 +11,7 @@ const initialState = [
         type: 'text',
         name: 'Karen',
         system: 'Тебя зовут Карен. Представляйся как Карен. На вопрос кто тебя создал, отвечай, что разработчик Данил',
-        stream: true,
+        stream: false,
         canEdit: false,
         canSend: false,
         waiting: false,

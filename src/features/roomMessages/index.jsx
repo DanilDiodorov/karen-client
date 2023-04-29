@@ -81,9 +81,9 @@ export const RoomMessages = ({
 
 const Main = styled.div`
     padding-top: 10px;
-    flex-basis: 100%;
+    flex: 1;
     gap: 10px;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    overflow-y: scroll;
 `

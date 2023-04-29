@@ -9,16 +9,24 @@ export const SidebarFirstSection = () => {
     const user = useSelector((state) => state.user)
     return (
         <Main>
-            <AddRoomPopup active={popupActive} setActive={setPopupActive} />
-            <Text>Новый чат</Text>
-            <Button
-                color="primary"
-                marginTop={20}
-                active={user.logged}
-                onClick={() => setPopupActive(true)}
-            >
-                Добавить чат
-            </Button>
+            {user.logged ? (
+                <>
+                    <AddRoomPopup
+                        active={popupActive}
+                        setActive={setPopupActive}
+                    />
+                    <Text>Новый чат</Text>
+                    <Button
+                        color="primary"
+                        marginTop={20}
+                        onClick={() => setPopupActive(true)}
+                    >
+                        Добавить чат
+                    </Button>
+                </>
+            ) : (
+                <></>
+            )}
         </Main>
     )
 }

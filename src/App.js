@@ -3,7 +3,7 @@ import { Sidebar } from './widgeds/sidebar'
 import { darkTheme, lightTheme } from './styles/theme'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Login } from './widgeds/login'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -29,6 +29,7 @@ import socket from './socket'
 import randomstring from 'randomstring'
 import { currentTime } from './helpers/getTime'
 import { Room } from './widgeds/room'
+import { Setting } from './widgeds/setting'
 
 let flag = true
 
@@ -41,12 +42,6 @@ function App() {
 
     useEffect(() => {
         if (flag) {
-            let vh = window.innerHeight / 100
-            document.documentElement.style.setProperty('--vh', `${vh}px`)
-            window.addEventListener('resize', () => {
-                vh = window.innerHeight / 100
-                document.documentElement.style.setProperty('--vh', `${vh}px`)
-            })
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
                     setLoading(true)
@@ -200,6 +195,18 @@ function App() {
         }
     }, [dispatch, rooms])
 
+    useEffect(() => {
+        // let vh = window.innerHeight * 0.01
+        // document.querySelector('#root').style.setProperty('--vh', `${vh}px`)
+        // window.addEventListener('resize', () => {
+        //     let vh = window.innerHeight * 0.01
+        //     document.documentElement.style.setProperty('--vh', `${vh}px`)
+        // })
+        // return () => {
+        //     window.removeEventListener('resize', () => {})
+        // }
+    }, [])
+
     return (
         <ThemeProvider theme={user.dark ? darkTheme : lightTheme}>
             <BrowserRouter>
@@ -210,15 +217,24 @@ function App() {
                         <Route
                             path="/"
                             index
-                            element={<Room roomID={rooms[0].id} />}
+                            element={
+                                <Room
+                                    roomID={
+                                        rooms[0] !== undefined
+                                            ? rooms[0].id
+                                            : '1'
+                                    }
+                                />
+                            }
                         />
-                        <Route path="/room/:id" index element={<Room />} />
-                        <Route path="/login" index element={<Login />} />
+                        <Route path="/room/:id" element={<Room />} />
+                        <Route path="/setting" element={<Setting />} />
+                        <Route path="/login" element={<Login />} />
                         <Route
                             path="/signin"
-                            index
                             element={<Signin user={user} />}
                         />
+                        <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </Main>
             </BrowserRouter>
@@ -228,15 +244,15 @@ function App() {
 
 const Main = styled.div`
     color: ${({ theme }) => theme.colors.font};
-    position: relative;
-    height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
     overflow: hidden;
     display: flex;
+    height: 100%;
+    position: relative;
 
-    @media ${({ theme }) => theme.media.large} {
+    /* @media ${({ theme }) => theme.media.large} {
         height: 100%;
-    }
+    } */
 `
 
 export default App

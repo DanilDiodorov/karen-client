@@ -116,7 +116,7 @@ const Main = styled.div`
 
     @media ${({ theme }) => theme.media.large} {
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         padding: 0px;
         flex-direction: column;
         justify-content: flex-start;

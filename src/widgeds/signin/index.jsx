@@ -36,8 +36,8 @@ export const Signin = ({ user }) => {
             setError('Заполните все поля')
         } else if (name.length < 3) {
             setError('Имя должно быть более 3 символов')
-        } else if (name.length > 30) {
-            setError('Имя должно быть менее 30 символов')
+        } else if (name.length > 20) {
+            setError('Имя должно быть менее 20 символов')
         } else if (password.length < 6) {
             setError('Пароль должен быть более 6 символов')
         } else if (password.length > 30) {
@@ -159,7 +159,7 @@ const Main = styled.div`
 
     @media ${({ theme }) => theme.media.large} {
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         padding: 0px;
         flex-direction: column;
         justify-content: flex-start;
@@ -212,6 +212,7 @@ const Block = styled.div`
     display: flex;
     justify-content: space-between;
 `
+
 const FooterBlock = styled.div`
     display: flex;
     justify-content: center;

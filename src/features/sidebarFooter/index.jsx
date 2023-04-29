@@ -7,7 +7,11 @@ import { BiLogOut, BiLogIn } from 'react-icons/bi'
 import { FooterButton } from '../../shared/footerButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteLink } from '../../shared/routeLink'
-import { closeMenu, setDark } from '../../store/slices/userSlice'
+import {
+    closeMenu,
+    setCurrentRoom,
+    setDark,
+} from '../../store/slices/userSlice'
 import { auth } from '../../firebase'
 import { ConfirmPopup } from '../../shared/confirmPopup'
 import { useState } from 'react'
@@ -55,11 +59,18 @@ export const SidebarFooter = () => {
             />
             <Block>
                 {user.logged ? (
-                    <FooterButton
-                        Icon={FiSettings}
-                        text={'Настройки'}
-                        type={true}
-                    />
+                    <RouteLink
+                        to="/setting"
+                        onClick={() => dispatch(closeMenu())}
+                    >
+                        <FooterButton
+                            onClick={() => dispatch(setCurrentRoom('setting'))}
+                            active={user.currentRoom === 'setting'}
+                            Icon={FiSettings}
+                            text={'Настройки'}
+                            type={true}
+                        />
+                    </RouteLink>
                 ) : (
                     <></>
                 )}
@@ -84,6 +95,8 @@ export const SidebarFooter = () => {
                         onClick={() => dispatch(closeMenu())}
                     >
                         <FooterButton
+                            onClick={() => dispatch(setCurrentRoom('login'))}
+                            active={user.currentRoom === 'login'}
                             Icon={BiLogIn}
                             text={'Войти'}
                             type={true}

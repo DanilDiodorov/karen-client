@@ -80,14 +80,18 @@ export const RoomTools = ({
                     border={true}
                     onClick={() => deleteHandler()}
                 />
-                <FooterButton
-                    Icon={CiStreamOn}
-                    text={'Стрим'}
-                    type={false}
-                    onClick={streamState}
-                    toggled={currentStream}
-                    border={true}
-                />
+                {logged ? (
+                    <FooterButton
+                        Icon={CiStreamOn}
+                        text={'Стрим'}
+                        type={false}
+                        onClick={streamState}
+                        toggled={currentStream}
+                        border={true}
+                    />
+                ) : (
+                    <></>
+                )}
             </Left>
             <Right>
                 <FooterButton
@@ -113,7 +117,6 @@ const Main = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-right: 30px;
-    flex-shrink: 0;
 
     @media ${({ theme }) => theme.media.large} {
         display: ${({ active }) => (active ? 'flex' : 'none')};

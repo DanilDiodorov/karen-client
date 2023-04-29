@@ -10,6 +10,7 @@ export const FooterButton = ({
     type = true,
     onClick,
     toggled,
+    active,
 }) => {
     const [isToggled, toggle] = useState(toggled)
 
@@ -22,7 +23,12 @@ export const FooterButton = ({
     }, [toggled])
 
     return (
-        <Main type={type} border={border} onClick={type ? onClick : callback}>
+        <Main
+            type={type}
+            border={border}
+            onClick={type ? onClick : callback}
+            active={active}
+        >
             <Block>
                 <IconBlock danger={danger}>
                     {Icon !== null ? <Icon /> : <></>}
@@ -43,6 +49,10 @@ const Main = styled.div`
     border-radius: ${({ theme }) => theme.sizes.borderRadius}px;
     border: 1px solid
         ${({ theme, border }) => (border ? theme.colors.stroke : 'transparent')};
+
+    background-color: ${({ theme, type, active }) =>
+        type && active ? theme.colors.hovered : 'transparent'};
+
     &:hover {
         background-color: ${({ theme, type }) =>
             type ? theme.colors.hovered : 'transparent'};
