@@ -3,7 +3,13 @@ import { Sidebar } from './widgeds/sidebar'
 import { darkTheme, lightTheme } from './styles/theme'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom'
+import {
+    Route,
+    Routes,
+    BrowserRouter,
+    Navigate,
+    useNavigate,
+} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Login } from './widgeds/login'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -39,6 +45,7 @@ function App() {
     const [progress, setProgress] = useState(0)
     const rooms = useSelector((state) => state.rooms)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (flag) {
@@ -91,6 +98,7 @@ function App() {
                     dispatch(deleteRooms())
                     setLoading(false)
                     dispatch(setCurrentRoom(rooms[0].id))
+                    return navigate('/')
                 }
             })
             flag = false
