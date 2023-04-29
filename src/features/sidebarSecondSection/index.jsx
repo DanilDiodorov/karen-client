@@ -27,6 +27,7 @@ export const SidebarSecondSection = () => {
         currentId = id
         setDeletePopupActive(true)
     }
+
     const confirmDelete = async () => {
         setDeleteLoading(true)
         await deleteDataById('rooms', currentId)
@@ -36,6 +37,7 @@ export const SidebarSecondSection = () => {
         setDeletePopupActive(false)
         return navigate('/')
     }
+
     const onCancelDelete = () => {
         setDeletePopupActive(false)
     }

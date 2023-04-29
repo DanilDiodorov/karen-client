@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { ProfileInfo } from '../../shared/profileInfo'
-import { FiSettings } from 'react-icons/fi'
+import { RiAdminFill } from 'react-icons/ri'
 import { MdDarkMode } from 'react-icons/md'
 import { BiLogOut, BiLogIn } from 'react-icons/bi'
 
@@ -58,7 +58,7 @@ export const SidebarFooter = () => {
                 text={user.statusText}
             />
             <Block>
-                {user.logged ? (
+                {user.status === 3 ? (
                     <RouteLink
                         to="/setting"
                         onClick={() => dispatch(closeMenu())}
@@ -66,8 +66,8 @@ export const SidebarFooter = () => {
                         <FooterButton
                             onClick={() => dispatch(setCurrentRoom('setting'))}
                             active={user.currentRoom === 'setting'}
-                            Icon={FiSettings}
-                            text={'Настройки'}
+                            Icon={RiAdminFill}
+                            text={'Админ панель'}
                             type={true}
                         />
                     </RouteLink>
