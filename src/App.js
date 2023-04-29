@@ -238,7 +238,18 @@ function App() {
                             path="/signin"
                             element={<Signin user={user} />}
                         />
-                        <Route path="*" element={<Navigate to="/" replace />} />
+                        <Route path="*" element={<Navigate to="/" />} />
+                        <Route
+                            element={
+                                <Room
+                                    roomID={
+                                        rooms[0] !== undefined
+                                            ? rooms[0].id
+                                            : '1'
+                                    }
+                                />
+                            }
+                        />
                     </Routes>
                 </Main>
             </BrowserRouter>
