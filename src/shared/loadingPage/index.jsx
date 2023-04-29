@@ -16,7 +16,7 @@ const Main = styled.div`
     display: ${({ active }) => (active ? 'flex' : 'none')};
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: ${({ theme }) => theme.colors.bgSideBar};
     z-index: 10;
     align-items: center;
