@@ -1,13 +1,27 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
+import { marked } from 'marked'
+import { useEffect } from 'react'
+import { useRef } from 'react'
 
-export const Message = ({ children, text, isMy = true, typing = false }) => {
+export const Message = ({
+    children,
+    text = '',
+    isMy = true,
+    loader = null,
+}) => {
+    const textRef = useRef(null)
+
+    useEffect(() => {
+        textRef.current.innerHTML = marked.parse(
+            typeof text === 'string' ? text : ''
+        )
+    }, [text])
+
     return (
         <Main isMy={isMy} className="message">
             {children}
-            <Text>
-                {text}
-                {!isMy && typing ? <Mark>|</Mark> : <></>}
-            </Text>
+            {loader !== null ? <Loader>{loader}</Loader> : <></>}
+            <Text ref={textRef}></Text>
         </Main>
     )
 }
@@ -21,35 +35,16 @@ const Main = styled.div`
         isMy ? theme.colors.bgMessage : theme.colors.primary};
     padding: 15px;
     max-width: 100%;
-    white-space: pre-wrap;
     margin-right: 25px;
 
     @media ${({ theme }) => theme.media.large} {
         margin-right: 7px;
     }
 `
-const MarkKeyframes = keyframes`
-    0% {
-        opacity: 1;
-    }
-    50%{
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-`
-
-const Mark = styled.span`
-    margin-top: 4px;
-    font-size: 16px;
-    margin-left: 2px;
-    width: 3px;
-    font-weight: 600;
-    background-color: ${({ theme }) => theme.colors.font};
-    animation: ${MarkKeyframes} 0.2s ease-in infinite;
-`
 
 const Text = styled.div`
+    margin-top: 10px;
+`
+const Loader = styled.div`
     margin-top: 10px;
 `

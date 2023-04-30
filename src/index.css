@@ -22,8 +22,9 @@ body {
 }
 
 *::-webkit-scrollbar {
-    width: 6px; /* ширина scrollbar */
+    width: 8px; /* ширина scrollbar */
     border-radius: 50%;
+    height: 8px;
 }
 
 *::-webkit-scrollbar-track {
@@ -37,4 +38,12 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
+}
+
+pre {
+    border-radius: 8px;
+    width: 100%;
+    overflow: auto;
+    padding: 15px;
+    background-color: #0f1627;
 }

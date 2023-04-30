@@ -40,7 +40,7 @@ export const RoomFooter = ({ id, canSend, waiting }) => {
                     duration: 100,
                     containerId: 'ContainerElementID',
                 })
-            }, 1)
+            }, 100)
         }
     }
 

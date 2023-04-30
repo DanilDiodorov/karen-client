@@ -24,10 +24,10 @@ export const RoomMessages = ({
 
     useEffect(() => {
         let block = document.querySelector('#ContainerElementID')
-        if (block.scrollHeight - (block.clientHeight + block.scrollTop) < 60) {
+        if (block.scrollHeight - (block.clientHeight + block.scrollTop) < 100) {
             animateScroll.scrollToBottom({
                 smooth: true,
-                duration: 200,
+                duration: 100,
                 containerId: 'ContainerElementID',
             })
         }
@@ -69,7 +69,7 @@ export const RoomMessages = ({
                 </Message>
             ))}
             {recieveWaiting ? (
-                <Message text={<Loader />} isMy={false}>
+                <Message isMy={false} loader={<Loader />}>
                     <ProfileInfo ava={null} name={'Karen'} text={''} />
                 </Message>
             ) : (

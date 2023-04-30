@@ -242,12 +242,8 @@ export const roomsSlice = createSlice({
                         room.messages[room.messages.length - 1].role ===
                         'assistant'
                     ) {
-                        room.messages.pop()
-                        deleteData(
-                            'messages',
-                            'mid',
-                            room.messages[room.messages.length - 1].mid
-                        )
+                        const deletedRoom = room.messages.pop()
+                        deleteData('messages', 'mid', deletedRoom.mid)
                     }
                     room.waiting = true
                     room.recieveWaiting = true
