@@ -14,6 +14,7 @@ export const RoomMessages = ({
     stop,
     currentMid,
     typing,
+    currentName,
 }) => {
     const user = useSelector((state) => state.user)
     const [flag, setFlag] = useState(true)
@@ -63,7 +64,7 @@ export const RoomMessages = ({
                     <ProfileInfo
                         def={message.role === 'user' ? true : false}
                         ava={null}
-                        name={message.role === 'user' ? user.name : 'Karen'}
+                        name={message.role === 'user' ? user.name : currentName}
                         text={message.time}
                     />
                 </Message>

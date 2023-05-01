@@ -50,6 +50,7 @@ export const Popup = ({
 }
 
 const PopupBG = styled.div`
+    z-index: 200;
     position: fixed;
     display: ${(props) => (props.isActive ? 'flex' : 'none')};
     top: 0;
@@ -67,6 +68,7 @@ const PopupMain = styled.div`
     height: auto;
     background-color: ${({ theme }) => theme.colors.popup};
     border-radius: ${({ theme }) => theme.sizes.borderRadius}px;
+    z-index: 250;
 
     @media ${({ theme }) => theme.media.large} {
         width: 90vw;

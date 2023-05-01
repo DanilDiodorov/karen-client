@@ -1,12 +1,12 @@
 html {
-    height: 100vh;
+    height: 100%;
     height: -webkit-fill-available;
 }
 
 body {
     margin: 0;
     overflow: hidden;
-    height: 100vh;
+    height: 100%;
     height: -webkit-fill-available;
     display: flex;
 }

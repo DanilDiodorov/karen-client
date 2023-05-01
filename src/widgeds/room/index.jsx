@@ -25,6 +25,7 @@ export const Room = ({ roomID }) => {
     const [currentMid, setCurrentMid] = useState('')
     const [currentTyping, setCurrentTyping] = useState(null)
     const [currentTools, setCurrentTools] = useState(false)
+    const [currentName, setCurrentName] = useState('')
     const navigate = useNavigate()
 
     let { id } = useParams()
@@ -50,6 +51,7 @@ export const Room = ({ roomID }) => {
                 setCurrentMid(room.currentMid)
                 setCurrentTyping(room.typing)
                 setCurrentTools(room.tools)
+                setCurrentName(room.name)
                 found = true
             }
         })
@@ -83,6 +85,7 @@ export const Room = ({ roomID }) => {
                 stop={currentStop}
                 currentMid={currentMid}
                 typing={currentTyping}
+                currentName={currentName}
             />
             <RoomTools
                 id={id}

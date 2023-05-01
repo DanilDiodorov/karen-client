@@ -18,7 +18,7 @@ const Main = styled.div`
     width: 100vw;
     height: 100%;
     background-color: ${({ theme }) => theme.colors.bgSideBar};
-    z-index: 10;
+    z-index: 500;
     align-items: center;
     justify-content: center;
     gap: 30px;

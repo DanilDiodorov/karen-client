@@ -28,6 +28,7 @@ const Main = styled.div`
     overflow: auto;
     border-right: 1px solid ${({ theme }) => theme.colors.stroke};
     flex-shrink: 0;
+    z-index: 100;
 
     @media ${({ theme }) => theme.media.large} {
         position: absolute;
