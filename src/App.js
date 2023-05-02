@@ -29,7 +29,7 @@ import socket from './socket'
 import randomstring from 'randomstring'
 import { currentTime } from './helpers/getTime'
 import { Room } from './widgeds/room'
-import { Setting } from './widgeds/setting'
+import { Admin } from './widgeds/admin'
 
 let flag = true
 
@@ -229,7 +229,7 @@ function App() {
                         />
                         <Route path="/room/:id" element={<Room />} />
                         {user.logged ? (
-                            <Route path="/setting" element={<Setting />} />
+                            <Route path="/admin" element={<Admin />} />
                         ) : (
                             <></>
                         )}

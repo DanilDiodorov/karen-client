@@ -3,6 +3,7 @@ import {
     collection,
     deleteDoc,
     doc,
+    getCountFromServer,
     getDoc,
     getDocs,
     limit,
@@ -25,6 +26,12 @@ export const getData = async (table, field, value) => {
         })
     })
     return newArray
+}
+
+export const getCount = async (table) => {
+    const coll = collection(db, table)
+    const snapshot = await getCountFromServer(coll)
+    return snapshot.data().count
 }
 
 export const getDataOrderBy = async (table, field, value, field2) => {

@@ -60,12 +60,12 @@ export const SidebarFooter = () => {
             <Block>
                 {user.status === 3 ? (
                     <RouteLink
-                        to="/setting"
+                        to="/admin"
                         onClick={() => dispatch(closeMenu())}
                     >
                         <FooterButton
-                            onClick={() => dispatch(setCurrentRoom('setting'))}
-                            active={user.currentRoom === 'setting'}
+                            onClick={() => dispatch(setCurrentRoom('admin'))}
+                            active={user.currentRoom === 'admin'}
                             Icon={RiAdminFill}
                             text={'Админ панель'}
                             type={true}

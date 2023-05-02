@@ -1,20 +1,25 @@
 import styled from 'styled-components'
+import { AdminHeader } from '../../features/adminHeader'
 
-export const Setting = () => {
-    return <Main></Main>
+export const Admin = () => {
+    return (
+        <Main>
+            <AdminHeader />
+        </Main>
+    )
 }
 
 const Main = styled.div`
     background-color: ${({ theme }) => theme.colors.bgMain};
     flex-basis: 1;
-    padding: 0 0 20px 25px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
     flex: 1;
 
     @media ${({ theme }) => theme.media.large} {
-        padding: 0 0 10px 5px;
+        padding: 10px;
         width: 100vw;
     }
 `
