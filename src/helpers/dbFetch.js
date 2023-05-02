@@ -28,9 +28,28 @@ export const getData = async (table, field, value) => {
     return newArray
 }
 
+export const getAllData = async (table) => {
+    let newArray = []
+    const q = query(collection(db, table))
+    const data = await getDocs(q)
+    data.forEach((doc) => {
+        newArray.push({
+            id: doc.id,
+            ...doc.data(),
+        })
+    })
+    return newArray
+}
+
 export const getCount = async (table) => {
     const coll = collection(db, table)
     const snapshot = await getCountFromServer(coll)
+    return snapshot.data().count
+}
+
+export const getCountWhere = async (table, field, value) => {
+    const q = query(collection(db, table), where(field, '==', value))
+    const snapshot = await getCountFromServer(q)
     return snapshot.data().count
 }
 

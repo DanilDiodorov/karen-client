@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { AdminHeader } from '../../features/adminHeader'
+import { AdminUsers } from '../../features/adminUsers'
 
 export const Admin = () => {
     return (
         <Main>
             <AdminHeader />
+            <AdminUsers />
         </Main>
     )
 }

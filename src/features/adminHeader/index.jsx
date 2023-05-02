@@ -10,10 +10,10 @@ export const AdminHeader = () => {
     const [rooms, setRooms] = useState(0)
     const [messages, setMessages] = useState(0)
 
-    const getData = async () => {
-        setUsers(await getCount('users'))
-        setRooms(await getCount('rooms'))
-        setMessages(await getCount('messages'))
+    const getData = () => {
+        getCount('users').then((data) => setUsers(data))
+        getCount('rooms').then((data) => setRooms(data))
+        getCount('messages').then((data) => setMessages(data))
     }
 
     useEffect(() => {

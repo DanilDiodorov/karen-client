@@ -147,14 +147,15 @@ function App() {
                     }
                     if (data.type === 'end') {
                         dispatch(setTyping({ id: room.id, typing: false }))
-                        setData('messages', room.currentMid, {
-                            mid: room.currentMid,
-                            roomID: room.id,
-                            role: 'assistant',
-                            content: room.fullMessage,
-                            time: currentTime(),
-                            time2: Date.now(),
-                        })
+                        if (user.logged)
+                            setData('messages', room.currentMid, {
+                                mid: room.currentMid,
+                                roomID: room.id,
+                                role: 'assistant',
+                                content: room.fullMessage,
+                                time: currentTime(),
+                                time2: Date.now(),
+                            })
                         dispatch(
                             setFullMessage({ id: room.id, fullMessage: '' })
                         )
@@ -177,7 +178,8 @@ function App() {
                             ...newMessage,
                             roomID: room.id,
                         }
-                        setData('messages', newMessage.mid, newMessage)
+                        if (user.logged)
+                            setData('messages', newMessage.mid, newMessage)
                         dispatch(
                             setRecieveWaiting({
                                 id: room.id,
@@ -193,7 +195,7 @@ function App() {
         return () => {
             socket.off('message')
         }
-    }, [dispatch, rooms])
+    }, [dispatch, rooms, user.logged])
 
     useEffect(() => {
         // let vh = window.innerHeight * 0.01

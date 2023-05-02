@@ -13,11 +13,11 @@ export const AdminCard = ({ color, icon, title, count }) => {
 const Main = styled.div`
     flex: 1;
     min-width: 300px;
-    height: 250px;
+    height: 200px;
     background-color: ${({ color }) => color};
     border-radius: 15px;
     color: white;
-    padding: 30px;
+    padding: 20px;
     font-size: 20px;
 `
 

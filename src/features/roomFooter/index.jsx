@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { TextArea } from '../../shared/textArea'
 import { Send } from '../../shared/send'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { addMessage, setCanSend } from '../../store/slices/roomsSlice'
 import { animateScroll } from 'react-scroll'
@@ -11,6 +11,7 @@ import { setData } from '../../helpers/dbFetch'
 let shift = false
 
 export const RoomFooter = ({ id, canSend, waiting }) => {
+    const user = useSelector((state) => state.user)
     const [text, setText] = useState('')
     const dispatch = useDispatch()
 
@@ -32,7 +33,9 @@ export const RoomFooter = ({ id, canSend, waiting }) => {
                 ...newMessage,
                 roomID: id,
             }
-            setData('messages', newMessage.mid, newMessage)
+            if (user.logged) {
+                setData('messages', newMessage.mid, newMessage)
+            }
             setText('')
             setTimeout(() => {
                 animateScroll.scrollToBottom({
