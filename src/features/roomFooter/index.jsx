@@ -64,6 +64,22 @@ export const RoomFooter = ({ id, canSend, waiting }) => {
     }
 
     useEffect(() => {
+        const textarea = document.querySelector('.input')
+        if (textarea.scrollHeight > textarea.offsetHeight) {
+            let height = textarea.scrollHeight
+            if (textarea.scrollHeight > 150) {
+                height = 140
+            } else {
+                textarea.style.height = 'auto'
+            }
+            textarea.style.height = height - 15 + 'px'
+        } else {
+            textarea.style.height = 'auto'
+            textarea.style.height = textarea.scrollHeight - 15 + 'px'
+        }
+    }, [text])
+
+    useEffect(() => {
         if (text.length > 0 && waiting === false)
             dispatch(setCanSend({ id, canSend: true }))
         else dispatch(setCanSend({ id, canSend: false }))
@@ -73,6 +89,7 @@ export const RoomFooter = ({ id, canSend, waiting }) => {
         <Main>
             <TextArea
                 placeholder="Сообщение"
+                className="input"
                 value={text}
                 onChange={(data) => setText(data.target.value)}
                 onKeyDown={(e) => keyDownHandler(e)}
@@ -84,11 +101,11 @@ export const RoomFooter = ({ id, canSend, waiting }) => {
 }
 
 const Main = styled.div`
-    height: 50px;
     display: flex;
     justify-content: space-between;
     margin-right: 30px;
     gap: 10px;
+    align-items: flex-end;
 
     @media ${({ theme }) => theme.media.large} {
         margin-right: 10px;

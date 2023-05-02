@@ -28,7 +28,7 @@ export const AdminUserItem = ({ user, index }) => {
     useEffect(() => {
         if (user.status === 1) setStatus('Обычный')
         else if (user.status === 2) setStatus('Премиум')
-        else if (user.status === 3) setStatus('Премиум')
+        else if (user.status === 3) setStatus('Админ')
     }, [user])
 
     return (

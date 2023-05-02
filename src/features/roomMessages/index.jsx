@@ -71,7 +71,7 @@ export const RoomMessages = ({
             ))}
             {recieveWaiting ? (
                 <Message isMy={false} loader={<Loader />}>
-                    <ProfileInfo ava={null} name={'Karen'} text={''} />
+                    <ProfileInfo ava={null} name={currentName} text={''} />
                 </Message>
             ) : (
                 <></>
