@@ -72,10 +72,10 @@ export const RoomFooter = ({ id, canSend, waiting }) => {
             } else {
                 textarea.style.height = 'auto'
             }
-            textarea.style.height = height - 15 + 'px'
+            textarea.style.height = height - 13 + 'px'
         } else {
             textarea.style.height = 'auto'
-            textarea.style.height = textarea.scrollHeight - 15 + 'px'
+            textarea.style.height = textarea.scrollHeight - 13 + 'px'
         }
     }, [text])
 

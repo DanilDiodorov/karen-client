@@ -62,7 +62,6 @@ const Table = styled.table`
 const Thead = styled.thead`
     background-color: #474f65;
     color: white;
-    height: 60px;
     border-radius: 20px;
 `
 
